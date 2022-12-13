@@ -1,0 +1,36 @@
+{
+  "name": "@shvmeless/image-filesystem-cli",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Luciano Aedo Puga",
+    "url": "https://github.com/shvmeless"
+  },
+  "files": [
+    "build",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "ifs": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "pack": "tsc && npm pack",
+    "dev": "ts-node-dev --respawn --clear ./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.14",
+    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "conventional-changelog-cli": "2.2.2",
+    "eslint": "8.29.0",
+    "eslint-config-standard-with-typescript": "23.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-n": "15.6.0",
+    "eslint-plugin-promise": "6.1.1",
+    "ts-node": "10.9.1",
+    "ts-node-dev": "2.0.0",
+    "typescript": "4.9.4"
+  }
+}

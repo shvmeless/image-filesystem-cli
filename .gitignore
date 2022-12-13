@@ -1,0 +1,19 @@
+# NODE MODULES
+package-lock.json
+node_modules
+
+# PRODUCTION
+build
+dist
+
+# TEMP
+public
+backup
+custom
+others
+temp
+tmp
+
+# LOCAL
+coverage
+.env

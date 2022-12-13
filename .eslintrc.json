@@ -1,0 +1,48 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": "standard-with-typescript",
+  "overrides": [],
+  "ignorePatterns": [
+    "node_modules/",
+    "coverage/",
+    "scripts/",
+    "build/",
+    "dist/",
+    "docs/"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    // TYPESCRIPT
+    "@typescript-eslint/type-annotation-spacing": ["warn",{ "before": false, "after": true }],
+    "@typescript-eslint/array-type": ["error", { "default": "array", "readonly": "array" }],
+    "@typescript-eslint/method-signature-style": ["error", "method"],
+    "@typescript-eslint/no-inferrable-types": "error",
+    // OVERRIDE
+    "@typescript-eslint/no-extra-semi": "error",
+    "no-extra-semi": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/indent": ["error", 2],
+    "indent": "off",
+    "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": "off",
+    "@typescript-eslint/object-curly-spacing": ["error", "always"],
+    "object-curly-spacing": "off",
+    "@typescript-eslint/space-before-blocks": ["error", "always"],
+    "space-before-blocks": "off",
+    // VANILLA
+    "curly": ["error", "multi"],
+    "arrow-parens": [ "warn", "always" ],
+    "no-trailing-spaces": "off",
+    "object-shorthand": "off",
+    "padded-blocks": "off",
+    "camelcase": "error"
+  }
+}
