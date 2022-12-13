@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "18.11.14",
+    "@types/sharp": "0.31.0",
     "@typescript-eslint/eslint-plugin": "5.46.1",
     "conventional-changelog-cli": "2.2.2",
     "eslint": "8.29.0",
@@ -34,6 +35,7 @@
     "typescript": "4.9.4"
   },
   "dependencies": {
-    "natsort": "2.0.3"
+    "natsort": "2.0.3",
+    "sharp": "0.31.2"
   }
 }
