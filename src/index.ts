@@ -1,9 +1,11 @@
 // IMPORTS
 import { filterByDatePrompt, filterByFormatPrompt, filterBySizePrompt } from './prompts/filterPrompts'
-import { dirPathPrompt, filterPrompt } from './prompts/mainPrompts'
+import { reformatPrompt, renamePrompt, resizePrompt } from './prompts/featurePrompts'
+import { dirPathPrompt, featurePrompt, filterPrompt } from './prompts/mainPrompts'
 import { Image, readImages } from './libs/image'
 import { filterImages } from './libs/filtering'
 import { sortImages } from './libs/sorting'
+import { features } from './libs/features'
 import { output } from './libs/output'
 import sharp from 'sharp'
 
@@ -18,7 +20,11 @@ async function main (path?: string): Promise<void> {
 
     let images = readImages(dirPath)
     images = sortImages.byName(images)
-    images = await filter(images)
+    images = await filterMenu(images)
+
+    output.newline()
+    output.info(`${images.length} images found.`)
+    output.newline()
 
     main(dirPath).catch((error) => { output.error(error.message) })
 
@@ -26,7 +32,7 @@ async function main (path?: string): Promise<void> {
 }
 
 // FUNCTION
-async function filter (images: Image[]): Promise<Image[]> {
+async function filterMenu (images: Image[]): Promise<Image[]> {
 
   const filters = await filterPrompt()
 
@@ -49,7 +55,46 @@ async function filter (images: Image[]): Promise<Image[]> {
   output.info(`${images.length} images found.`)
   output.newline()
 
+  await featureMenu(images)
+
   return images
+
+}
+
+// FUNCTION
+async function featureMenu (images: Image[]): Promise<void> {
+
+  const feature = await featurePrompt()
+
+  if (feature === 'RENAME') {
+
+    const rename = await renamePrompt()
+
+    const prefix = rename.prefix
+    const sort = rename.sort
+    const reverse = rename.order === 'DESC'
+
+    if (sort === 'NAME') images = sortImages.byName(images, reverse)
+    else if (sort === 'SIZE') images = sortImages.bySize(images, reverse)
+    else if (sort === 'DATE') images = sortImages.byDate(images, reverse)
+    else if (sort === 'FORMAT') images = sortImages.byFormat(images, reverse)
+
+    output.newline()
+    await features.rename(images, prefix)
+
+  } else if (feature === 'REFORMAT') {
+
+    const format = await reformatPrompt()
+    output.newline()
+    await features.reformat(images, format)
+
+  } else if (feature === 'RESIZE') {
+
+    const { width, height } = await resizePrompt()
+    output.newline()
+    await features.resize(images, { width, height })
+
+  }
 
 }
 

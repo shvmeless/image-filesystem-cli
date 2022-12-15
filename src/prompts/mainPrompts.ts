@@ -35,3 +35,19 @@ export async function filterPrompt (): Promise<('FORMAT' | 'SIZE' | 'DATE')[]> {
   return answer
 
 }
+
+// FUNCTION
+export async function featurePrompt (): Promise<'RENAME' | 'REFORMAT' | 'RESIZE'> {
+
+  const feature = await prompts.list({
+    message: 'Select the feature you want to use:',
+    choices: [
+      { name: 'RENAME', value: 'RENAME' },
+      { name: 'REFORMAT', value: 'REFORMAT' },
+      { name: 'RESIZE', value: 'RESIZE' },
+    ],
+  })
+
+  return feature
+
+}
