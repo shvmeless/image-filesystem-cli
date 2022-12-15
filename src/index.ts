@@ -1,4 +1,4 @@
-// IMPORTS
+#!/usr/bin/env node
 import { filterByDatePrompt, filterByFormatPrompt, filterBySizePrompt } from './prompts/filterPrompts'
 import { reformatPrompt, renamePrompt, resizePrompt } from './prompts/featurePrompts'
 import { dirPathPrompt, featurePrompt, filterPrompt } from './prompts/mainPrompts'
