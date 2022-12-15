@@ -1,5 +1,5 @@
 // IMPORTS
-import { Image } from './Image'
+import { Image } from './image'
 import natsort from 'natsort'
 
 // FUNCTION
