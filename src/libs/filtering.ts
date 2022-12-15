@@ -1,5 +1,5 @@
 // IMPORTS
-import { Image, ImageFormat } from './Image'
+import { Image, ImageFormat } from './image'
 
 // FUNCTION
 function filterByFormat (images: Image[], formats: ImageFormat[]): Image[] {
