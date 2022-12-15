@@ -19,3 +19,19 @@ export async function dirPathPrompt (): Promise<string> {
   return answer
 
 }
+
+// FUNCTION
+export async function filterPrompt (): Promise<('FORMAT' | 'SIZE' | 'DATE')[]> {
+
+  const answer = await prompts.checkbox({
+    message: 'Check the filters you want to apply:',
+    choices: [
+      { name: 'Filter by image format.', value: 'FORMAT' },
+      { name: 'Filter by file size.', value: 'SIZE' },
+      { name: 'Filter by modification date.', value: 'DATE' },
+    ],
+  })
+
+  return answer
+
+}
